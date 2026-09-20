@@ -54,7 +54,7 @@ Una vez creado, se puede iniciar sesión en `http://127.0.0.1:8000/admin/` (o en
 | Páginas funcionales | Home con listado de posts y vista de detalle | Captura de home y de detalle de un post |
 | Formularios con validación | Formulario de creación/edición de posts, valida longitud mínima de título (5) y contenido (20) | Captura del formulario y del mensaje de error de validación |
 | Edición de contenido | Los usuarios pueden editar sus propios posts desde `/post/<id>/editar/` | Captura de edición y del post actualizado (persistencia) |
-| Despliegue | Aplicación desplegada en [completar con la URL pública] | Captura accediendo desde el navegador a la URL pública |
+ura accediendo desde el navegador a la URL pública |
 
 2. Crear y activar el entorno virtual:
 
@@ -116,6 +116,8 @@ pip install -r requirements.txt && python manage.py migrate && python manage.py 
 gunicorn Mi_Blog.wsgi
 
 
-7. **Desplegar**: Render construye la aplicación automáticamente y genera una URL pública (por ejemplo `https://mi-blog.onrender.com`) accesible desde cualquier lugar.
+7. La aplicación se encuentra desplegada en Render y accesible públicamente en: https://proyecto-final-python-3t2j.onrender.com/ accesible desde cualquier lugar.
+
+**Entorno de despliegue:** Render (plan gratuito), usando Gunicorn como servidor WSGI, Whitenoise para servir archivos estáticos, y una base de datos PostgreSQL provista por Render.
 
 De esta manera, cualquier usuario podría acceder a la aplicación sin necesidad de tenerla corriendo localmente.
