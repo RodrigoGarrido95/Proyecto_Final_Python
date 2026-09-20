@@ -1,0 +1,9 @@
+﻿{% extends "core/base.html" %}
+{% block content %}
+    <div class="card">
+        <h1>{{ post.titulo }}</h1>
+        <div class="meta">Por {{ post.autor }} · {{ post.fecha_creacion|date:"d/m/Y H:i" }}</div>
+        <p>{{ post.contenido }}</p>
+    </div>
+    <a href="{% url 'home' %}" class="volver">← Volver al inicio</a>
+{% endblock %}

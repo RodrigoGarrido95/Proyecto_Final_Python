@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Blog</title>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'home' %}">Inicio</a> |
+        {% if user.is_authenticated %}
+            Hola, {{ user.username }} |
+            <a href="{% url 'post_create' %}">Nuevo Post</a> |
+            <a href="{% url 'logout' %}">Cerrar sesión</a>
+        {% else %}
+            <a href="{% url 'login' %}">Iniciar sesión</a> |
+            <a href="{% url 'register' %}">Registrarse</a>
+        {% endif %}
+    </nav>
+    <hr>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

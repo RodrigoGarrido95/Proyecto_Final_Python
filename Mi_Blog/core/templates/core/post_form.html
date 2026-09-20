@@ -1,0 +1,11 @@
+﻿{% extends "core/base.html" %}
+{% block content %}
+    <div class="card">
+        <h1>Nuevo Post</h1>
+        <form method="post" class="post-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Publicar</button>
+        </form>
+    </div>
+{% endblock %}

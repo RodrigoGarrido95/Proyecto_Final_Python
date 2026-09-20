@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Blog</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f4f7;
+            margin: 0;
+            color: #333;
+        }
+        nav {
+            background-color: #2c3e50;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        nav a, nav span, nav button {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin-right: 15px;
+            font-size: 15px;
+        }
+        nav a:hover, nav button:hover {
+            color: #3498db;
+            cursor: pointer;
+        }
+        nav form {
+            display: inline;
+        }
+        nav button {
+            background: none;
+            border: none;
+            padding: 0;
+            font-family: inherit;
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+        }
+        .card h2 a {
+            color: #2c3e50;
+            text-decoration: none;
+        }
+        .card h2 a:hover {
+            color: #3498db;
+        }
+        .meta {
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        form.post-form input[type="text"],
+        form.post-form textarea,
+        form p input,
+        form p textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        form p {
+            margin-bottom: 15px;
+        }
+        button[type="submit"], .btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover, .btn:hover {
+            background-color: #2980b9;
+        }
+        .errorlist {
+            color: #e74c3c;
+            list-style: none;
+            padding: 0;
+            font-size: 13px;
+        }
+        a.volver {
+            display: inline-block;
+            margin-top: 15px;
+            color: #3498db;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div>
+            <a href="{% url 'home' %}">📝 Mi Blog</a>
+        </div>
+        <div>
+            {% if user.is_authenticated %}
+                <span>Hola, {{ user.username }}</span>
+                <a href="{% url 'post_create' %}">Nuevo Post</a>
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Cerrar sesión</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}">Iniciar sesión</a>
+                <a href="{% url 'register' %}">Registrarse</a>
+            {% endif %}
+        </div>
+    </nav>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

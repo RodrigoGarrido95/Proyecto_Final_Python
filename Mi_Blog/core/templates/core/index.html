@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Hola mundo!</h1>
-</body>
-</html>
+﻿{% extends "core/base.html" %}
+{% block content %}
+    <h1>Mi Blog</h1>
+    {% for post in posts %}
+        <div class="card">
+            <h2><a href="{% url 'post_detail' post.pk %}">{{ post.titulo }}</a></h2>
+            <div class="meta">Por {{ post.autor }} · {{ post.fecha_creacion|date:"d/m/Y H:i" }}</div>
+            <p>{{ post.contenido|truncatewords:25 }}</p>
+        </div>
+    {% empty %}
+        <p>No hay posts todavía. ¡Sé el primero en publicar!</p>
+    {% endfor %}
+{% endblock %}

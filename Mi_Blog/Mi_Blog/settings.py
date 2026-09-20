@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-7puuli$3lw-*pbiz!b5ej_9p-0uy2yd3l+j2i%pso@n1&e4uo=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -126,3 +126,9 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'
+
+STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
