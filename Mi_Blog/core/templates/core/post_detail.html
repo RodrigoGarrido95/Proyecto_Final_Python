@@ -4,6 +4,9 @@
         <h1>{{ post.titulo }}</h1>
         <div class="meta">Por {{ post.autor }} · {{ post.fecha_creacion|date:"d/m/Y H:i" }}</div>
         <p>{{ post.contenido }}</p>
+        {% if user == post.autor %}
+            <a href="{% url 'post_edit' post.pk %}" class="btn">Editar</a>
+        {% endif %}
     </div>
     <a href="{% url 'home' %}" class="volver">← Volver al inicio</a>
 {% endblock %}

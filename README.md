@@ -32,6 +32,29 @@ Blog personal desarrollado con Django que permite a los usuarios registrarse, in
 git clone https://github.com/RodrigoGarrido95/Proyecto_Final_Python.git
 cd Proyecto_Final_Python/Mi_Blog
 
+## Crear un superusuario (acceso al panel de administración)
+
+Para poder acceder al panel de administración en `/admin/`, es necesario crear un superusuario:
+
+El sistema pedirá:
+- **Username:** nombre de usuario para el superusuario
+- **Email:** opcional, se puede dejar en blanco
+- **Password:** contraseña (no se muestra en pantalla mientras se escribe)
+
+Una vez creado, se puede iniciar sesión en `http://127.0.0.1:8000/admin/` (o en la URL pública + `/admin/`) con esas credenciales.
+
+## Checklist de requisitos y evidencia
+
+| Requisito | Implementación | Evidencia |
+|---|---|---|
+| Panel de administración | Django Admin en `/admin/`, con el modelo Post registrado | Captura del panel admin con listado de posts |
+| Registro de usuarios | Formulario en `/registro/` con `UserCreationForm` | Captura del formulario de registro completado |
+| Inicio de sesión | Formulario en `/login/` con `LoginView` | Captura del login |
+| Perfiles / gestión de usuarios | Gestionable desde el panel admin (`/admin/auth/user/`) | Captura de la lista de usuarios en el admin |
+| Páginas funcionales | Home con listado de posts y vista de detalle | Captura de home y de detalle de un post |
+| Formularios con validación | Formulario de creación/edición de posts, valida longitud mínima de título (5) y contenido (20) | Captura del formulario y del mensaje de error de validación |
+| Edición de contenido | Los usuarios pueden editar sus propios posts desde `/post/<id>/editar/` | Captura de edición y del post actualizado (persistencia) |
+| Despliegue | Aplicación desplegada en [completar con la URL pública] | Captura accediendo desde el navegador a la URL pública |
 
 2. Crear y activar el entorno virtual:
 
